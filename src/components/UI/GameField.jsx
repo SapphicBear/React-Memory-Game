@@ -7,7 +7,7 @@ export default function GameField({ characters, onClick }) {
         {characters.map((char) => {
             return (
                 <Card 
-                    className={`card ${char}`}
+                    className={`card ${char.name}`}
                     name={char.name}
                     imageUrl={char.image}
                     onClick={onClick}
