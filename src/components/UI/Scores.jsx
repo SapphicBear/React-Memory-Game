@@ -1,16 +1,15 @@
-import TopScore from "./TopScore";
-import CurrentScore from "./CurrentScore";
-
 export default function Scores( { currentScore, topScore }) {
 
     return (
         <div className="score-area">
-            <CurrentScore 
-                currentScore={currentScore}
-            />
-            <TopScore 
-                topScore={topScore}
-            />
+            <h3
+                className="current-score"> 
+            Score: {currentScore}
+            </h3>
+            <h3 
+                className="top-score">
+                High score: {topScore}
+            </h3>
         </div>
     )
 }
