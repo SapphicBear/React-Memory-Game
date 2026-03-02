@@ -100,10 +100,12 @@ export default function App() {
             topScore={topScore}
         />
         </header>
+        <main aria-label="Game area">
         <GameField 
             characters={characters}
             onClick={handleClick}
         />
+        </main>
         <footer>
             <p>No gen AI was used in the making of this project. This project was made using the <Link url={"https://ponyapi.net"} name="PonyAPI"/></p>
             <ul className="link-area"> Links:
