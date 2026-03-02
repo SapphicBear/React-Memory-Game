@@ -1,8 +1,21 @@
-import "./styles/test.css";
 import "./styles/index.css";
+import {fas} from "@fortawesome/free-solid-svg-icons";
 import GameField from "./components/UI/GameField.jsx";
 import Scores from "./components/UI/Scores.jsx";
 import { useState, useEffect } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+library.add(fas);
+
+function Link({ url, name }) {
+    return (
+        <a
+            href={url}
+            target="_blank" 
+            rel="noopener noreferrer"
+        >{name}<FontAwesomeIcon icon="fa-solid fa-up-right-from-square"/></a>
+    )
+}
 
 export default function App() {
     const [characters, setCharacters] = useState([]);
@@ -29,12 +42,12 @@ export default function App() {
                 let list = new Set();
                 let newList = [];
                 let i = 0;
-                while (i < 9) {
+                while (i < 8) {
                     let randomNumber = Math.floor(Math.random() * 50);
                     if (!list.has(data.data[randomNumber].id)) {
                         list.add(data.data[randomNumber]);
                         i++;
-                    } else {
+                    } else if (list.has(data.data[randomNumber].id)) {
                         continue;
                     }
                 }
@@ -73,22 +86,34 @@ export default function App() {
             setCharacters(newList);
             console.log("score + 1")
         }
+        e.target.blur();
     }
+    const links = [{name: "GitHub", link: "https://github.com/SapphicBear"}, {name: "BlueSky", link: "https://bsky.app/profile/sleepyscreen.bsky.social"}, {name: "Odin Project", link: "https://www.theodinproject.com/"}]
 
     return (
         <>
         <header>
             <h1>MLP Memory Card Game</h1>
             <p>Try your luck! You can only click on one of the characters per round! Try to get all of them without clicking on the same one twice!</p>
-        </header>
-        <Scores 
+            <Scores 
             currentScore={score}
             topScore={topScore}
         />
+        </header>
         <GameField 
             characters={characters}
             onClick={handleClick}
         />
+        <footer>
+            <p>No gen AI was used in the making of this project. This project was made using the <Link url={"https://ponyapi.net"} name="PonyAPI"/></p>
+            <ul className="link-area"> Links:
+                {links.map((link) => {
+                    return (
+                        <li><Link url={link.link} name={link.name}/></li>
+                    )
+                })}
+            </ul>
+        </footer>
         </>
     );
 }
