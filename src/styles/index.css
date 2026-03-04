@@ -137,7 +137,6 @@ body {
 
 .score-area {
     width: 300px;
-    flex: 0 0 1;
     font-size: 24px;
     padding: 2rem;
     background: var(--highlight);
@@ -165,7 +164,6 @@ header {
 header h1 {
     align-self: center;
     font-size: 40px;
-    flex: 0 0 1;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
