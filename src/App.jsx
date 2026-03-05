@@ -22,6 +22,8 @@ export default function App() {
     const [chosen, setChosen] = useState(new Set());
     const [score, setScore] = useState(0);
     const [topScore, setTopScore] = useState(0);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     function handleScore() {
         setScore(score + 1);
@@ -55,7 +57,10 @@ export default function App() {
                     newList.push(item);
                 });
                 setCharacters(newList);
-            }).catch(err=>console.log(err));
+            }).catch(err=> {
+                setError(err);
+                throw new Error(err);
+            }).finally(() => setLoading(false));
     }, []);
 
     const handleClick = (e) => {
@@ -102,6 +107,8 @@ export default function App() {
         </header>
         <main aria-label="Game area">
         <GameField 
+            error={error}
+            loading={loading}
             characters={characters}
             onClick={handleClick}
         />

@@ -1,6 +1,21 @@
 import Card from "./Card";
 
-export default function GameField({ characters, onClick }) {
+export default function GameField({ loading, characters, onClick, error }) {
+
+    if (loading) {
+        return (
+            <div className="card-area"> 
+                <h2 className="loading">Loading...</h2>
+            </div>
+        )
+    }
+    if (error) {
+        return (
+            <div className="card-area">
+                <h2 className="error">An Error has occurred</h2>
+            </div>
+        )
+    }
 
     return (
         <div className="card-area">

@@ -189,6 +189,15 @@ footer ul {
     display: flex;
     
 }
+.loading {
+    color: var(--text);
+    font-size: 30px;
+}
+
+.error {
+    color: rgb(235, 46, 46);
+    font-size: 30px;
+}
 
 @media (min-width: 1500px) {
     .score-area {
