@@ -37,6 +37,8 @@ export default function App() {
         }
     }
 
+    // TODO: add gameover function and state to track if the game is over/ if the score is the same as the character.length
+
     useEffect(() => {
         fetch(`https://ponyapi.net/v1/character/by-residence/ponyville`)
             .then(res=>res.json())
